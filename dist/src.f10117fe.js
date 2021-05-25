@@ -117,21 +117,47 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/index.ts":[function(require,module,exports) {
-// import {User} from './User';
+})({"src/CustomMap.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CustomMap = void 0; //The goal is to hide what all you can do with the map object so that other devs don't break anything.
+
+var CustomMap =
+/** @class */
+function () {
+  function CustomMap(id) {
+    this.googleMap = new google.maps.Map(document.getElementById(id), {
+      zoom: 13,
+      center: {
+        lat: 32.7767,
+        lng: -96.7970
+      }
+    });
+  }
+
+  return CustomMap;
+}();
+
+exports.CustomMap = CustomMap;
+},{}],"src/index.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+}); // import {User} from './User';
 // import {Company} from './Company';
-// const user = new User;
+
+var CustomMap_1 = require("./CustomMap"); // const user = new User;
 // const company = new Company;
 // console.log(user);
 // console.log(company);
-new google.maps.Map(document.getElementById('map'), {
-  zoom: 10,
-  center: {
-    lat: 32.7767,
-    lng: -96.7970
-  }
-});
-},{}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+
+new CustomMap_1.CustomMap('map');
+},{"./CustomMap":"src/CustomMap.ts"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
