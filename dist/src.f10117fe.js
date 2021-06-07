@@ -136893,6 +136893,7 @@ function () {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
+    this.displayContent = "User Name: " + this.name;
   }
 
   return User;
@@ -136925,6 +136926,7 @@ function () {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
+    this.displayContent = "\n    <div>\n        <h1>" + this.companyName + "</h1>\n        <p>" + this.catchPhrase + "</p>\n    </div>\n    ";
   }
 
   return Company;
@@ -136944,7 +136946,7 @@ var CustomMap =
 function () {
   function CustomMap(id) {
     this.googleMap = new google.maps.Map(document.getElementById(id), {
-      zoom: 1,
+      zoom: 2.5,
       center: {
         lat: 0,
         lng: 0
@@ -136964,7 +136966,7 @@ function () {
     });
     marker.addListener('click', function () {
       var infoWindow = new google.maps.InfoWindow({
-        content: 'GO JAZZ!!!'
+        content: mappable.displayContent
       });
       infoWindow.open(_this.googleMap, marker);
     });

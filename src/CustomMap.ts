@@ -6,6 +6,7 @@ interface Mappable {
         lat: number,
         lng: number
     }
+    displayContent: string;
 }
 
 //The goal is to hide what all you can do with the map object so that other devs don't break anything.
@@ -14,7 +15,7 @@ export class CustomMap {
     private googleMap: google.maps.Map;
     constructor(id: string){
         this.googleMap = new google.maps.Map(document.getElementById(id), {
-            zoom: 1, 
+            zoom: 2.5, 
             center: {
                 lat: 0,
                 lng: 0
@@ -32,7 +33,7 @@ export class CustomMap {
         })
         marker.addListener('click', ()=>{
             const infoWindow = new google.maps.InfoWindow({
-                content: 'GO JAZZ!!!'
+                content: mappable.displayContent
             })
             infoWindow.open(this.googleMap, marker)
         })

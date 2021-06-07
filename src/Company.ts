@@ -6,6 +6,7 @@ location: {
     lat: number;
     lng: number;
 }
+displayContent: string;
 constructor(){
     this.companyName = faker.company.companyName();
     this.catchPhrase = faker.company.catchPhrase();
@@ -13,5 +14,11 @@ constructor(){
         lat: parseFloat(faker.address.latitude()),
         lng: parseFloat(faker.address.longitude())
     }
+    this.displayContent = `
+    <div>
+        <h1>${this.companyName}</h1>
+        <p>${this.catchPhrase}</p>
+    </div>
+    `
 }
 }
